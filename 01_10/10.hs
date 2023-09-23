@@ -5,6 +5,6 @@ encode  :: Eq a => [a]->[(Int,a)]
 encode x = foldr helper [] x
     where
         helper i [] = [(1,i)]
-        helper i ((k,x):xs) 
+        helper i (y@(k,x):xs) 
             | i == x  = ((k+1,x):xs)
-            | otherwise       = ((1,i):(k,x):xs)
+            | otherwise       = ((1,i):y:xs)
